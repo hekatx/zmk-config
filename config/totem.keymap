@@ -140,14 +140,14 @@
 //          ┌─────┬─────┬─────┬──────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┐      
 //          │     │     │     │      │     │   │     │     │     │     │ f1  │      
 //          ├─────┼─────┼─────┼──────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤      
-//          │     │     │     │ to 5 │     │   │     │     │     │     │ f10 │      
+//          │  F  │  U  │  N  │ to 5 │     │   │     │     │     │     │ f10 │      
 //    ┌─────┼─────┼─────┼─────┼──────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┐
 //    │     │     │     │     │      │     │   │     │     │     │     │ f20 │     │
 //    └─────┴─────┴─────┼─────┼──────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────┘
 //                      │     │      │     │   │     │     │     │                  
 //                      └─────┴──────┴─────┘   └─────┴─────┴─────┘                  
            &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans   &trans   &kp F1          
-           &trans   &trans   &trans   &to 5    &trans       &trans   &trans   &trans   &trans   &kp F10         
+           &kp F    &kp U    &kp N    &to 5    &trans       &trans   &trans   &trans   &trans   &kp F10         
   &trans   &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans   &trans   &kp F20   &trans
                              &trans   &trans   &trans       &trans   &trans   &trans                            
             >;
