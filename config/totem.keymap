@@ -153,7 +153,7 @@
 //    └─────┴─────┴────┼─────┼─────┼──────┤   ├─────┼─────┼─────┼─────┴────────────┴─────┘
 //                     │     │     │      │   │     │     │     │                         
 //                     └─────┴─────┴──────┘   └─────┴─────┴─────┘                         
-           &kp F12   &kp F7   &kp F8   &kp F9   &kp PSCRN       &trans   &trans   &trans   &trans   &tog Gaming         
+           &kp F12   &kp F7   &kp F8   &kp F9   &kp PSCRN       &trans   &trans   &trans   &trans   &tog Game         
            &kp F11   &kp F4   &kp F5   &kp F6   &trans          &trans   &trans   &trans   &trans   &trans              
   &trans   &kp F10   &kp F1   &kp F2   &kp F3   &trans          &trans   &trans   &trans   &trans   &trans        &trans
                               &trans   &trans   &trans          &trans   &trans   &trans                                
@@ -180,7 +180,7 @@
             display-name = "Media";
         };
 
-        Gaming {
+        Game {
             bindings = <
 //           ┌─────┬─────┬──────┬─────┬──────┐   ┌─────┬─────┬─────┬─────┬─────┐      
 //           │     │     │      │     │      │   │     │     │     │     │     │      
@@ -197,7 +197,7 @@
                                  &kp LCTRL   &trans   &kp LEFT_ALT       &trans   &trans   &trans                           
             >;
 
-            display-name = "Gaming";
+            display-name = "Game";
         };
 
     };
