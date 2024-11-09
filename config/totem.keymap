@@ -21,6 +21,7 @@
 #define Num         3
 #define Fun         4
 #define Game        5
+#define Media       6
 
 &mt {
     quick-tap-ms = <100>;
@@ -53,32 +54,37 @@
 
     combos {
         compatible = "zmk,combos";
+        combo_capsword {
+          timeout-ms = <150>;
+          key-positions = <13 16>;
+          bindings = <&caps_word>;
+        };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
         Base {
-            label = "Base";
+            display-name = "Base";
             bindings = <
-//               ┌────────────┬────────────┬────────────┬────────────┬─────┐   ┌──────────┬────────────┬────────────┬────────────┬────────────┐         
-//               │     Q      │     W      │     E      │     R      │  T  │   │    Y     │     U      │     I      │     O      │     P      │         
-//               ├────────────┼────────────┼────────────┼────────────┼─────┤   ├──────────┼────────────┼────────────┼────────────┼────────────┤         
-//               │ &hm lgui A │ &hm lalt S │ &hm lctl D │ &hm lsft F │  G  │   │    H     │ &hm rsft J │ &hm rctl K │ &hm ralt L │ &hm rgui ; │         
-//    ┌──────────┼────────────┼────────────┼────────────┼────────────┼─────┤   ├──────────┼────────────┼────────────┼────────────┼────────────┼────────┐
-//    │ lt 4 esc │     Z      │     X      │     C      │     V      │  B  │   │    N     │     M      │     ,      │     .      │     /      │ lt 4 ' │
-//    └──────────┴────────────┴────────────┼────────────┼────────────┼─────┤   ├──────────┼────────────┼────────────┼────────────┴────────────┴────────┘
-//                                         │    del     │    spc     │ tab │   │ lt 2 ent │ lt 3 bspc  │     -      │                                   
-//                                         └────────────┴────────────┴─────┘   └──────────┴────────────┴────────────┘                                   
-                 &kp Q        &kp W        &kp E         &kp R          &kp T         &kp Y       &kp U         &kp I         &kp O        &kp P                                
-                 &hm LGUI A   &hm LALT S   &hm LCTRL D   &hm LSHIFT F   &kp G         &kp H       &hm RSHFT J   &hm RCTRL K   &hm RALT L   &hm RGUI SEMICOLON                   
-  &lt 4 ESCAPE   &kp Z        &kp X        &kp C         &kp V          &kp B         &kp N       &kp M         &kp COMMA     &kp DOT      &kp SLASH            &lt 4 APOSTROPHE
-                                           &kp DEL       &kp SPACE      &kp TAB       &lt 2 RET   &lt 3 BSPC    &kp MINUS                                                       
+//                ┌────────────┬────────────┬────────────┬────────────┬─────┐   ┌──────────┬────────────┬────────────┬────────────┬────────────┐         
+//                │     Q      │     W      │     E      │     R      │  T  │   │    Y     │     U      │     I      │     O      │     P      │         
+//                ├────────────┼────────────┼────────────┼────────────┼─────┤   ├──────────┼────────────┼────────────┼────────────┼────────────┤         
+//                │ &hm lgui A │ &hm lalt S │ &hm lctl D │ &hm lsft F │  G  │   │    H     │ &hm rsft J │ &hm rctl K │ &hm ralt L │ &hm rgui ; │         
+//    ┌───────────┼────────────┼────────────┼────────────┼────────────┼─────┤   ├──────────┼────────────┼────────────┼────────────┼────────────┼────────┐
+//    │ lt 4 lsft │     Z      │     X      │     C      │     V      │  B  │   │    N     │     M      │     ,      │     .      │     /      │ lt 4 ' │
+//    └───────────┴────────────┴────────────┼────────────┼────────────┼─────┤   ├──────────┼────────────┼────────────┼────────────┴────────────┴────────┘
+//                                          │  lt 6 esc  │    spc     │ tab │   │ lt 3 ent │ lt 2 bspc  │  lt 1 del  │                                   
+//                                          └────────────┴────────────┴─────┘   └──────────┴────────────┴────────────┘                                   
+                 &kp Q        &kp W        &kp E          &kp R          &kp T         &kp Y       &kp U         &kp I         &kp O        &kp P                                
+                 &hm LGUI A   &hm LALT S   &hm LCTRL D    &hm LSHIFT F   &kp G         &kp H       &hm RSHFT J   &hm RCTRL K   &hm RALT L   &hm RGUI SEMICOLON                   
+  &lt 4 LSHIFT   &kp Z        &kp X        &kp C          &kp V          &kp B         &kp N       &kp M         &kp COMMA     &kp DOT      &kp SLASH            &lt 4 APOSTROPHE
+                                           &lt 6 ESCAPE   &kp SPACE      &kp TAB       &lt 3 RET   &lt 2 BSPC    &lt 1 DEL                                                       
             >;
         };
 
         Num {
-            label = "Num";
+            display-name = "Num";
             bindings = <
 //          ┌───┬───┬───┬───┬───┐   ┌─────┬─────┬─────┬─────┬─────┐      
 //          │ [ │ 7 │ 8 │ 9 │ ] │   │     │     │     │     │     │      
@@ -96,27 +102,9 @@
             >;
         };
 
-        Nav {
-            label = "Nav";
-            bindings = <
-//           ┌──────┬──────┬──────┬──────┬─────┐   ┌─────┬─────┬───┬───┬──────┐      
-//           │      │      │  up  │      │  {  │   │  }  │  7  │ 8 │ 9 │  +   │      
-//           ├──────┼──────┼──────┼──────┼─────┤   ├─────┼─────┼───┼───┼──────┤      
-//           │ lsft │ left │ down │ rght │  [  │   │  ]  │  4  │ 5 │ 6 │  -   │      
-//    ┌──────┼──────┼──────┼──────┼──────┼─────┤   ├─────┼─────┼───┼───┼──────┼─────┐
-//    │ lalt │      │ pgup │      │ pgdn │  (  │   │  )  │  1  │ 2 │ 3 │ kp_* │     │
-//    └──────┴──────┴──────┼──────┼──────┼─────┤   ├─────┼─────┼───┼───┴──────┴─────┘
-//                         │      │      │     │   │     │     │ 0 │                 
-//                         └──────┴──────┴─────┘   └─────┴─────┴───┘                 
-                 &trans           &trans        &kp UP_ARROW   &trans      &kp LBRC       &kp RBRC   &kp NUMBER_7   &kp NUMBER_8   &kp NUMBER_9   &kp PLUS                
-                 &kp LEFT_SHIFT   &kp LEFT      &kp DOWN       &kp RIGHT   &kp LBKT       &kp RBKT   &kp NUMBER_4   &kp NUMBER_5   &kp NUMBER_6   &kp MINUS               
-  &kp LEFT_ALT   &trans           &kp PAGE_UP   &trans         &kp PG_DN   &kp LPAR       &kp RPAR   &kp NUMBER_1   &kp NUMBER_2   &kp NUMBER_3   &kp KP_MULTIPLY   &trans
-                                                &trans         &trans      &trans         &trans     &trans         &kp NUMBER_0                                          
-            >;
-        };
 
         Sym {
-            label = "Sym";
+            display-name = "Sym";
             bindings = <
 //          ┌───┬───┬───┬───┬───┐   ┌─────┬─────┬─────┬─────┬─────┐      
 //          │ { │ & │ * │ ( │ } │   │     │     │     │     │     │      
@@ -134,22 +122,41 @@
             >;
         };
 
-        Fun {
-            label = "Fun";
+        Nav {
+            display-name = "Nav";
             bindings = <
-//          ┌─────┬─────┬─────┬──────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┐      
-//          │     │     │     │      │     │   │     │     │     │     │ f1  │      
-//          ├─────┼─────┼─────┼──────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤      
-//          │  F  │  U  │  N  │ to 5 │     │   │     │     │     │     │ f10 │      
-//    ┌─────┼─────┼─────┼─────┼──────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┐
-//    │     │     │     │     │      │     │   │     │     │     │     │ f20 │     │
-//    └─────┴─────┴─────┼─────┼──────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────┘
-//                      │     │      │     │   │     │     │     │                  
-//                      └─────┴──────┴─────┘   └─────┴─────┴─────┘                  
-           &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans   &trans   &kp F1          
-           &kp F    &kp U    &kp N    &to 5    &trans       &trans   &trans   &trans   &trans   &kp F10         
-  &trans   &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans   &trans   &kp F20   &trans
-                             &trans   &trans   &trans       &trans   &trans   &trans                            
+//           ┌──────┬──────┬──────┬──────┬─────┐   ┌───────┬─────────┬─────────┬──────┬──────┐      
+//           │      │      │  up  │      │  {  │   │ again │ K_PASTE │  copy   │ cut  │ undo │      
+//           ├──────┼──────┼──────┼──────┼─────┤   ├───────┼─────────┼─────────┼──────┼──────┤      
+//           │ lsft │ left │ down │ rght │  [  │   │ caps  │  left   │  down   │  up  │ rght │      
+//    ┌──────┼──────┼──────┼──────┼──────┼─────┤   ├───────┼─────────┼─────────┼──────┼──────┼─────┐
+//    │ lalt │      │ pgup │      │ pgdn │  (  │   │  ins  │  home   │ PG_down │ pgup │ end  │     │
+//    └──────┴──────┴──────┼──────┼──────┼─────┤   ├───────┼─────────┼─────────┼──────┴──────┴─────┘
+//                         │      │      │     │   │       │         │    0    │                    
+//                         └──────┴──────┴─────┘   └───────┴─────────┴─────────┘                    
+                 &trans           &trans        &kp UP_ARROW   &trans      &kp LBRC       &kp K_REDO   &kp K_PASTE   &kp K_COPY     &kp K_CUT   &kp K_UNDO         
+                 &kp LEFT_SHIFT   &kp LEFT      &kp DOWN       &kp RIGHT   &kp LBKT       &kp CAPS     &kp LEFT      &kp DOWN       &kp UP      &kp RIGHT          
+  &kp LEFT_ALT   &trans           &kp PAGE_UP   &trans         &kp PG_DN   &kp LPAR       &kp INS      &kp HOME      &kp PG_DOWN    &kp PG_UP   &kp END      &trans
+                                                &trans         &trans      &trans         &trans       &trans        &kp NUMBER_0                                  
+            >;
+        };
+
+        Fun {
+            display-name = "Fun";
+            bindings = <
+//          ┌─────┬────┬─────┬─────┬──────┐   ┌──────┬─────┬─────┬─────┬─────┐      
+//          │ f12 │ f7 │ f8  │ f9  │ pscr │   │ boot │     │     │     │     │      
+//          ├─────┼────┼─────┼─────┼──────┤   ├──────┼─────┼─────┼─────┼─────┤      
+//          │ f11 │ f4 │ f5  │ f6  │      │   │      │     │     │     │     │      
+//    ┌─────┼─────┼────┼─────┼─────┼──────┤   ├──────┼─────┼─────┼─────┼─────┼─────┐
+//    │     │ f10 │ f1 │ f2  │ f3  │      │   │      │     │     │     │     │     │
+//    └─────┴─────┴────┼─────┼─────┼──────┤   ├──────┼─────┼─────┼─────┴─────┴─────┘
+//                     │     │     │      │   │      │     │     │                  
+//                     └─────┴─────┴──────┘   └──────┴─────┴─────┘                  
+           &kp F12   &kp F7   &kp F8   &kp F9   &kp PSCRN       &bootloader   &trans   &trans   &trans   &trans         
+           &kp F11   &kp F4   &kp F5   &kp F6   &trans          &trans        &trans   &trans   &trans   &trans         
+  &trans   &kp F10   &kp F1   &kp F2   &kp F3   &trans          &trans        &trans   &trans   &trans   &trans   &trans
+                              &trans   &trans   &trans          &trans        &trans   &trans                           
             >;
         };
 
@@ -171,7 +178,27 @@
                                  &kp LCTRL   &trans   &kp LEFT_ALT       &trans   &trans   &trans                           
             >;
 
-            label = "Gaming";
+            display-name = "Gaming";
+        };
+
+        Media {
+            bindings = <
+//          ┌─────┬─────┬─────┬─────┬─────┐   ┌──────┬──────┬──────┬──────┬──────┐      
+//          │     │     │     │     │     │   │      │      │      │      │      │      
+//          ├─────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼──────┼──────┼──────┤      
+//          │     │     │     │     │     │   │      │ prev │ volu │ vold │ next │      
+//    ┌─────┼─────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼──────┼──────┼──────┼─────┐
+//    │     │     │     │     │     │     │   │      │      │      │      │      │     │
+//    └─────┴─────┴─────┼─────┼─────┼─────┤   ├──────┼──────┼──────┼──────┴──────┴─────┘
+//                      │     │     │     │   │ stop │ play │ mute │                    
+//                      └─────┴─────┴─────┘   └──────┴──────┴──────┘                    
+           &trans   &trans   &trans   &trans   &trans       &trans       &trans       &trans         &trans         &trans             
+           &trans   &trans   &trans   &trans   &trans       &trans       &kp C_PREV   &kp C_VOL_UP   &kp C_VOL_DN   &kp C_NEXT         
+  &trans   &trans   &trans   &trans   &trans   &trans       &trans       &trans       &trans         &trans         &trans       &trans
+                             &trans   &trans   &trans       &kp C_STOP   &kp C_PP     &kp C_MUTE                                       
+            >;
+
+            display-name = "Media";
         };
     };
 };
