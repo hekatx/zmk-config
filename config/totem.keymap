@@ -74,15 +74,6 @@
         };
     };
 
-    combos {
-        compatible = "zmk,combos";
-        combo_capsword {
-          timeout-ms = <250>;
-          key-positions = <13 16>;
-          bindings = <&caps_word>;
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
@@ -108,19 +99,19 @@
         Nav {
             display-name = "Nav";
             bindings = <
-//          ┌─────┬─────┬─────┬─────┬─────┐   ┌───────┬──────┬──────┬──────┬──────┐      
-//          │     │     │     │     │     │   │ again │      │ copy │ cut  │ undo │      
-//          ├─────┼─────┼─────┼─────┼─────┤   ├───────┼──────┼──────┼──────┼──────┤      
-//          │     │     │     │     │     │   │ caps  │ left │ down │  up  │ rght │      
-//    ┌─────┼─────┼─────┼─────┼─────┼─────┤   ├───────┼──────┼──────┼──────┼──────┼─────┐
-//    │     │     │     │     │     │     │   │  ins  │ home │ pgdn │ pgup │ end  │     │
-//    └─────┴─────┴─────┼─────┼─────┼─────┤   ├───────┼──────┼──────┼──────┴──────┴─────┘
-//                      │     │     │     │   │       │      │      │                    
-//                      └─────┴─────┴─────┘   └───────┴──────┴──────┘                    
-           &trans   &trans   &trans   &trans   &trans       &kp K_REDO   &trans     &kp K_COPY   &kp K_CUT   &kp K_UNDO         
-           &trans   &trans   &trans   &trans   &trans       &kp CAPS     &kp LEFT   &kp DOWN     &kp UP      &kp RIGHT          
-  &trans   &trans   &trans   &trans   &trans   &trans       &kp INS      &kp HOME   &kp PG_DN    &kp PG_UP   &kp END      &trans
-                             &trans   &trans   &trans       &trans       &trans     &trans                                      
+//          ┌─────┬─────┬─────┬─────┬─────┐   ┌───────┬─────────┬──────┬──────┬──────┐      
+//          │     │     │     │     │     │   │ again │ K_PASTE │ copy │ cut  │ undo │      
+//          ├─────┼─────┼─────┼─────┼─────┤   ├───────┼─────────┼──────┼──────┼──────┤      
+//          │     │     │     │     │     │   │ caps  │  left   │ down │  up  │ rght │      
+//    ┌─────┼─────┼─────┼─────┼─────┼─────┤   ├───────┼─────────┼──────┼──────┼──────┼─────┐
+//    │     │     │     │     │     │     │   │  ins  │  home   │ pgdn │ pgup │ end  │     │
+//    └─────┴─────┴─────┼─────┼─────┼─────┤   ├───────┼─────────┼──────┼──────┴──────┴─────┘
+//                      │     │     │     │   │       │         │      │                    
+//                      └─────┴─────┴─────┘   └───────┴─────────┴──────┘                    
+           &trans   &trans   &trans   &trans   &trans       &kp K_REDO   &kp K_PASTE   &kp K_COPY   &kp K_CUT   &kp K_UNDO         
+           &trans   &trans   &trans   &trans   &trans       &kp CAPS     &kp LEFT      &kp DOWN     &kp UP      &kp RIGHT          
+  &trans   &trans   &trans   &trans   &trans   &trans       &kp INS      &kp HOME      &kp PG_DN    &kp PG_UP   &kp END      &kp CAPS
+                             &trans   &trans   &trans       &trans       &trans        &trans                                      
             >;
         };
 
